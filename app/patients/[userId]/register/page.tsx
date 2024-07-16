@@ -1,10 +1,9 @@
+import RegisterFormComponent from "@/components/forms/RegisterForm.component";
+import { getPatient, getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 
-import { getPatient, getUser } from "@/lib/actions/patient.actions";
-import { PatientForm } from "@/components/forms/PatientForm.component";
-import Link from "next/link";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
@@ -24,23 +23,18 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
             className="mb-12 h-10 w-fit"
           />
 
-          <PatientForm  />
+          <RegisterFormComponent user={user} />
 
-          <div className="text-14-regular mt-20 flex justify-center">
-             <p className="justify-items-center text-dark-600 xl:text-left">© 2024 NepalCarePulse. All Rights Reserved.</p>
-             <Link href="/?admin=true" className="text-green-500">
-             Admin
-             </Link>
-          </div>
+          <p className="copyright py-12">© 2024 Nepal Care Pulse</p>
         </div>
       </section>
 
       <Image
-        src="/assets/images/doctor.jpg"
+        src="/assets/images/register-img.png"
         height={1000}
         width={1000}
         alt="patient"
-        className="side-img max-w-[50%]"
+        className="side-img max-w-[390px]"
       />
     </div>
   );
