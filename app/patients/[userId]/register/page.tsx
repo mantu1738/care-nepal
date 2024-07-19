@@ -1,14 +1,18 @@
-import RegisterFormComponent from "@/components/forms/RegisterForm.component";
-import { getPatient, getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-
+import { getPatient, getUser } from "@/lib/actions/patient.actions";
+import RegisterForm from "@/components/forms/RegisterForm.component";
+import * as Sentry from "@sentry/nextjs";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
+
+
+
   const user = await getUser(userId);
   const patient = await getPatient(userId);
 
+  Sentry.metrics.set("user_view", user.name);
   if (patient) redirect(`/patients/${userId}/new-appointment`);
 
   return (
@@ -23,9 +27,9 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
             className="mb-12 h-10 w-fit"
           />
 
-          <RegisterFormComponent user={user} />
+          <RegisterForm user={user} />
 
-          <p className="copyright py-12">© 2024 Nepal Care Pulse</p>
+          <p className="copyright py-12">© 2024 CarePluse</p>
         </div>
       </section>
 

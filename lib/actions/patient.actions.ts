@@ -42,9 +42,9 @@ export const createUser = async (user: CreateUserParams) => {
 };
 
 // GET USER
-export const getUser = async (userId: string) => {
+export const getUser = async (UserId: string) => {
   try {
-    const user = await users.get(userId);
+    const user = await users.get(UserId);
 
     return parseStringify(user);
   } catch (error) {

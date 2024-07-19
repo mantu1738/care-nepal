@@ -13,7 +13,6 @@ import { UserFormValidation } from "@/lib/validation";
 import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
-import Image from "next/image";
 
 export const PatientForm = () => {
   const router = useRouter();
@@ -54,15 +53,7 @@ export const PatientForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
         <section className="mb-12 space-y-4">
-          <h1 className="header flex">Hi there ,
-          <Image 
-            src='/assets/gifs/hello.gif' 
-            height={35} 
-            width={35}   
-            alt="hello"
-            className="side-img max-w-[390px] mt-1.5 ml-2" 
-            />
-        </h1>
+          <h1 className="header">Hi there 👋</h1>
           <p className="text-dark-700">Get started with appointments.</p>
         </section>
 
